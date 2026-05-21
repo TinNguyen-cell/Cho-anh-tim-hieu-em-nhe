@@ -1,152 +1,33 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi người tớ thích... ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #ffe6e6, #ffb3d1);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
-            text-align: center;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s ease;
-            max-width: 90%;
-            width: 400px;
-            position: relative;
-            z-index: 10;
-        }
-        h1 {
-            color: #d63384;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .gif {
-            width: 150px;
-            margin-bottom: 20px;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-            position: relative;
-            height: 50px;
-        }
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
-        #yesBtn {
-            background-color: #ff4d79;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 77, 121, 0.4);
-        }
-        #yesBtn:hover {
-            transform: scale(1.1);
-        }
-        #noBtn {
-            background-color: #a6a6a6;
-            color: white;
-            position: absolute;
-            transition: all 0.2s ease;
-        }
-        /* Hiệu ứng trái tim bay */
-        .heart {
-            position: absolute;
-            color: #ff4d79;
-            font-size: 20px;
-            animation: fly 3s linear infinite;
-            opacity: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-        @keyframes fly {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+<title>Gửi lời yêu thương</title>
+<link rel="stylesheet" href="codetotinh.css" />
 </head>
-<body>
-
-    <div class="container" id="mainBox">
-        <!-- Bạn có thể đổi link ảnh chibi đáng yêu ở đây -->
-        <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW9sc3N5N204OXN5cG96Z3Fkb3Y0bms1NXh3Z3p5Z3d5Y3VwY2ptOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cZ7rmKfFYOvYI/giphy.gif" alt="cute bear">
-        <h1 id="question">Tớ thích cậu lâu lắm rồi. Làm người yêu tớ nha? 🥰</h1>
-        <div class="btn-group">
-            <button id="yesBtn" onclick="acceptLoop()">Đồng ý luôn! ❤️</button>
-            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">Không đời nào 😜</button>
-        </div>
-    </div>
-
-    <script>
-        // Hàm làm nút "Không" tự động nhảy chỗ khác khi dí chuột/vào chạm vào
-        function moveButton() {
-            const noBtn = document.getElementById('noBtn');
-            // Tính toán khoảng cách ngẫu nhiên nhưng vẫn giữ trong tầm màn hình
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
-            
-            // Đưa nút ra khỏi container chính để nhảy tự do trên màn hình
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        }
-
-        // Hàm xử lý khi bấm "Đồng ý"
-        function acceptLoop() {
-            const container = document.getElementById('mainBox');
-            // Thay đổi nội dung bên trong hộp thoại
-            container.innerHTML = `
-                <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z5Nzd0Zmx1c3NkaXgzdnN6N3Bicm8yamF4cTZ3cnN4N3RqdWV4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KztT2c4u8mYYUiBtOh/giphy.gif" alt="happy bear">
-                <h1 style="color: #ff4d79;">Hehe tớ biết ngay mà! 😘 <br><br> Chuẩn bị tinh thần đi, từ mai tớ sẽ qua đón cậu đi chơi nhé! ❤️</h1>
-            `;
-
-            // Kích hoạt hiệu ứng mưa trái tim
-            setInterval(createHeart, 150);
-        }
-
-        // Hàm tạo trái tim bay ngẫu nhiên
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 2 + "s"; // thời gian bay 2-4s
-            heart.style.fontSize = Math.random() * 15 + 15 + "px"; // kích thước ngẫu nhiên
-            document.body.appendChild(heart);
-
-            // Xóa trái tim sau khi bay xong để tránh nặng máy
-            setTimeout(() => {
-                heart.remove();
-            }, 3000);
-        }
-    </script>
-
+<body bgcolor="#000000">
+<center>
+<img src="https://timoday.edu.vn/wp-content/uploads/2020/06/love1.gif" width="300" height="25">
+</center>
+<h1 align="center">
+<span style="background: url(&quot;https://timoday.edu.vn/d9f50c755f7e4d8626a518843017a8bc_44837304.partner.gif&quot;) repeat scroll 0% 0% transparent; color:#fff; text-shadow: 0pt 0pt 0.3em LightYellow, 0pt 2pt 0.3em LightYellow;"><b>GỬI LỜI YÊU THƯƠNG</b></span>
+</h1>
+<center>
+<img src="https://timoday.edu.vn/wp-content/uploads/2020/06/love2.gif" width="300" height="25">
+</center>
+<center>
+<p><img src="https://timoday.edu.vn/wp-content/uploads/2020/06/love3.gif" width="460" height="433"></p>
+<img src="https://timoday.edu.vn/wp-content/uploads/2020/06/love4.gif" alt="" width="220" border="0">
+</center>
+<center>
+<img src="https://timoday.edu.vn/wp-content/uploads/2020/06/love4.gif" width="700" height="8"><br>
+<font style="font-size: 11pt">
+<font color="#FF0000" face="Comic Sans MS"></font>
+<font color="white" face="Comic Sans MS"></font>
+<marquee behavior="scroll" direction="left" scrollamount="2" scrolldelay="20" width="50%"><font face="Tahoma" size="2" color="#ffffff"> Bạn cho mình làm quen nhé hihi!</font></marquee><br>
+<img src="https://timoday.edu.vn/wp-content/uploads/2020/06/love5.gif" width="700" height="8">
+</font>
+</center>
+<div style="left: 0pt; position: fixed; top: 0pt; z-index: 0;">
+<!--<embed align="center" height="900px" width="2000px" src="images/chuot.swf" wmode="transparent"></embed>--></div>
 </body>
 </html>
